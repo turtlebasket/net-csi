@@ -1,0 +1,33 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\title{Net-CSI: An RNN-Based Network Intrusion Detection System}
+\author{Michael Lisano}
+\date{\today}
+
+\begin{document}
+\graphicspath{ {../assets/logo.png} }
+\maketitle
+
+\section*{Abstract}
+
+\subsection*{Overview}
+
+Net-CSI is a utility that uses Deep Learning to identify potentially dangerous traffic across a network. \href{https://github.com/turtlebasket/net-csi}{GitHub Repository}
+
+Traditionally, network IDS and IPS systems use a series of rulesets to look for potentially dangerous network activity. As useful as these rulesets are, they're almost always a game of cat and mouse, as industry and the community try to keep pace with bad actors. This project aims to leverage machine learning to learn the patterns of these rulesets and flags things in a way that wouldn't be possible with a ruleset.
+
+As of right now, there are other products and projects such as \href{https://github.com/CyberReboot/poseidon}{Poseidon} and \href{https://www.darktrace.com/en/products/enterprise/}{Darktrace Enterprise Immune System} in development that also employ deep learning to detect malicious network activity. These current machine learning methods work to profile typical machine activity and identify abnormal behaviors. While this works very well in enterprise settings, places with a wider range of devices coming and going (such as public wifi or a guest network) don't allow for this level of in-depth profiling. Net-CSI is made to address cases like these where the individual nodes on the network are moving targets.
+
+\subsection*{Dataset}
+Net-CSI's training dataset is generated from PCAP files, which are fed into Suricata. Suricata's output file (eve.json) is parsed, and packets whose indices appear in the output file are marked as suspicious. The dataset consists of two arrays, one containing each packet's hex dump, and the other containing the labels that are generated from Suricata's output.
+
+\subsection*{Training}
+Net-CSI will use some hybrid of RNN and MLP network. (Note that at least a few LSTM layers will be absolutely necessary in processing the variable-length inputs from the packet dataset).
+
+\subsection*{Usage}
+As with other IDS software, Net-CSI will be able to analyze network traffic either retrospectively or in real-time, however the latter will obviously require much more computational power (and a much higher power bill).
+
+\end{document}
