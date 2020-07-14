@@ -25,7 +25,7 @@ As of right now, there are other products and projects such as \href{https://git
 Net-CSI's training dataset is generated from PCAP files, which are fed into Suricata. Suricata's output file (eve.json) is parsed, and packets whose indices appear in the output file are marked as suspicious. The dataset consists of two arrays, one containing each packet's hex dump, and the other containing the labels that are generated from Suricata's output.
 
 \subsection*{Training}
-Net-CSI will use some hybrid of RNN and MLP network. Since Net-CSI's objective is to identify serial patterns in packet hex dumps, it will process inputs in a similar way to NLP networks.
+Net-CSI will use a combination of RNN and Feed-Forward network. Since Net-CSI's objective is to identify serial patterns in packet hex dumps, it will process inputs in a similar way to NLP.
 
 \subsection*{Usage}
 Net-CSI will be able to analyze network traffic either retrospectively or in real-time, however the latter will obviously require much more computational power (and a much higher power bill).
